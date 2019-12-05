@@ -55,9 +55,11 @@ for line in filehandle:
                 #print(heading[2:len(heading)-2])
         elif(re.search(r'Strand=', line)):
                 if(re.search(r'Plus/Plus', line)):
-                       print('>' + heading[2:len(heading)-2] + '+')
+                       print("\n" + '>' + heading[2:len(heading)] + '+')
                 else:
-                       print('>' + heading[2:len(heading)-2] + '-')
+                       print("\n" + '>' + heading[2:len(heading)] + '-')
         elif(re.search(r'^Sbjct', line)):
                 nucleotides = line.split('  ')
-                print(nucleotides[2])
+                print(re.sub(r'\-', '', nucleotides[2] ), end='')
+
+print()
